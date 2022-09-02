@@ -1,0 +1,17 @@
+import webbrowser
+import serial
+
+url = 'https://www.youtube.com/watch?v=hhTk3l9UfW0&list=PL_0EiXJ2aS-AHoYSrDCbOfiQPaRztkvvs&index=11'
+ard = serial.Serial(
+    port="COM3",
+    baudrate=9600
+    )
+
+while (True):
+    listen = ard.readline()
+    decoded = listen.decode('utf-8')
+    decoded = decoded[:-2]
+    print(decoded)
+    if decoded == '0':
+        webbrowser.open(url)
+        break;
