@@ -5,11 +5,11 @@ import time
 app = Flask(__name__)
 
 ard = serial.Serial(
-    port="COM3",
-    baudrate=9600
+    port="COM3", //아두이노 포트 번호
+    baudrate=9600 //보드레이트
     )
 
-time.sleep(3)
+time.sleep(3) //딜레이
 
 @app.route('/')
 def index():
@@ -20,7 +20,7 @@ def receive():
 
     ard.write("let me know".encode())
     listen = ard.readline()
-    decoded = listen.decode('utf-8')[:-2]
+    decoded = listen.decode('utf-8')[:-2]//결과값
 
     return decoded
 
