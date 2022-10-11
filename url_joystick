@@ -1,0 +1,30 @@
+import webbrowser
+import serial
+url0 = 'https://www.youtube.com/watch?v=MPP2Q9JBvbg' //That's Hilarious
+url1 = 'https://www.youtube.com/watch?v=Ec7TN_11az8' //STAY
+url2 = 'https://www.youtube.com/watch?v=ho1RzYneMtM' //Bad Habits
+url3 = 'https://www.youtube.com/watch?v=JBe0yHNEURo' //abcdefu
+url4 = 'https://www.youtube.com/watch?v=vZofi2hgiAE' //2002
+url5 = 'https://www.youtube.com/watch?v=uu_3AU3-a9E' //Dangerously
+ard = serial.Serial(
+    port="COM4",
+    baudrate=9600
+    )
+    
+while (True):
+    listen = ard.readline()
+    decoded = listen.decode('utf-8')
+    decoded = decoded[:-2]
+    print(decoded)
+    if decoded == '0':
+        webbrowser.open(url0)
+    elif decoded == '1':
+        webbrowser.open(url1)
+    elif decoded == '2':
+        webbrowser.open(url2)
+    elif decoded == '3':
+        webbrowser.open(url3)
+    elif decoded == '4':
+        webbrowser.open(url4)
+    elif decoded == '5':
+        webbrowser.open(url5)
